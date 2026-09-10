@@ -75,6 +75,17 @@ app.add_middleware(
 app.include_router(interviews_router)
 
 
+@app.get("/", tags=["Root"])
+async def root():
+    """Root entrypoint providing API metadata and navigation links."""
+    return {
+        "message": "Welcome to InterviewIQ Agentic AI Assessment Platform API",
+        "docs": "/docs",
+        "health": "/health",
+        "version": "1.0.0",
+    }
+
+
 @app.get("/health", tags=["Health"])
 async def health_check():
     """Health check endpoint."""
